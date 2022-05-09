@@ -44,6 +44,10 @@ class MyFrame1 : public wxFrame
 		wxStaticLine* m_staticline2;
 		wxPanel* p_Stereogram;
 
+		// Virtual event handlers, override them in your derived class
+		virtual void b_LoadFromFile_Click( wxCommandEvent& event ) { event.Skip(); }
+
+
 	public:
 
 		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Stereograms"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 740,690 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
