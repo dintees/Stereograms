@@ -64,8 +64,14 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->Layout();
 
 	this->Centre( wxBOTH );
+
+	// Connect Events
+	b_LoadFromFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
 }
 
 MyFrame1::~MyFrame1()
 {
+	// Disconnect Events
+	b_LoadFromFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
+
 }
