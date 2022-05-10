@@ -10,7 +10,7 @@ public:
 	unsigned char* GetImageData();
 	wxImage& GetImage();
 	void SetPanelSize(wxSize);
-	unsigned char& operator()(int x, int y);
+	unsigned char& operator[](int x);
 private:
 	wxImage _image;
 	wxSize _panelSize;

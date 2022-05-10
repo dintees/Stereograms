@@ -37,9 +37,9 @@ void ImageHolder::LoadImg()
 		_imageData[i] = 0.299 * imgDataTemp[i] + 0.587 * imgDataTemp[i + 1] + 0.114 * imgDataTemp[i + 2];
 	}
 }
-unsigned char& ImageHolder::operator()(int x, int y)
+unsigned char& ImageHolder::operator[](int x)
 {
-	return _imageData[x * y];
+	return _imageData[x];
 }
 
 unsigned char* ImageHolder::GetImageData()
