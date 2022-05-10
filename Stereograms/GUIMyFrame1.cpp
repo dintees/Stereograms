@@ -6,7 +6,7 @@
 
 GUIMyFrame1::GUIMyFrame1( wxWindow* parent )
 :
-MyFrame1( parent )
+MyFrame1( parent ), _image(new ImageHolder())
 {
 
 }
@@ -15,9 +15,9 @@ void GUIMyFrame1::b_LoadFromFile_Click( wxCommandEvent& event )
 {
 p_OriginalImage->ClearBackground(); // remove old photo from panel
 wxClientDC dc(p_OriginalImage);
-auto imageHolder = new ImageHolder(dc.GetSize());
-imageHolder->LoadImg();
-wxImage& image = imageHolder->GetImage();
+_image->SetPanelSize(dc.GetSize());
+_image->LoadImg();
+wxImage& image = _image->GetImage();
 wxBitmap bitmap(image);
 dc.DrawBitmap(bitmap, 0, 0, true);
 }

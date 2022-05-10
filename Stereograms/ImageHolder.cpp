@@ -23,8 +23,23 @@ void ImageHolder::LoadImg()
 
 	int imageHeight = _image.GetHeight();
 	int imageWidth = _image.GetWidth();
-	_imageData = new unsigned char[imageHeight * imageWidth * 3];
-	_imageData = _image.GetData();
+
+	// wersja kolorowa
+	/*_imageData = new unsigned char[imageHeight * imageWidth * 3];
+	_imageData = _image.GetData();*/
+	
+	// wersja szara
+	auto imgDataTemp = new unsigned char[imageHeight * imageWidth * 3];
+	imgDataTemp = _image.GetData();
+	_imageData = new unsigned char[imageHeight * imageWidth];
+	for (int i = 0; i < imageHeight * imageWidth; i++)
+	{
+		_imageData[i] = 0.299 * imgDataTemp[i] + 0.587 * imgDataTemp[i + 1] + 0.114 * imgDataTemp[i + 2];
+	}
+}
+unsigned char& ImageHolder::operator()(int x, int y)
+{
+	return _imageData[x * y];
 }
 
 unsigned char* ImageHolder::GetImageData()
@@ -34,4 +49,8 @@ unsigned char* ImageHolder::GetImageData()
 wxImage& ImageHolder::GetImage()
 {
 	return _image;
+}
+void ImageHolder::SetPanelSize(wxSize size)
+{
+	_panelSize = size;
 }
