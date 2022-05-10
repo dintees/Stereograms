@@ -42,6 +42,10 @@ unsigned char& ImageHolder::operator[](int x)
 	return _imageData[x];
 }
 
+unsigned char& ImageHolder::operator()(int x, int y){
+	return _imageData[x*_panelSize.GetWidth()+y];
+}
+
 unsigned char* ImageHolder::GetImageData()
 {
 	return _imageData;
