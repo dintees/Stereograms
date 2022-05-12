@@ -34,12 +34,16 @@ void ImageHolder::LoadImg()
 	_imageData = new unsigned char[imageHeight * imageWidth];
 	for (int i = 0; i < imageHeight * imageWidth; i++)
 	{
-		_imageData[i] = 0.299 * imgDataTemp[i] + 0.587 * imgDataTemp[i + 1] + 0.114 * imgDataTemp[i + 2];
+		_imageData[i] = 0.299 * imgDataTemp[i * 3] + 0.587 * imgDataTemp[i * 3 + 1] + 0.114 * imgDataTemp[i * 3 + 2];
 	}
 }
 unsigned char& ImageHolder::operator[](int x)
 {
 	return _imageData[x];
+}
+
+unsigned char& ImageHolder::operator()(int x, int y){
+	return _imageData[y*_image.GetWidth()+x];
 }
 
 unsigned char* ImageHolder::GetImageData()
