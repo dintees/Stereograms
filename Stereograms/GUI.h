@@ -21,6 +21,7 @@
 #include <wx/statline.h>
 #include <wx/sizer.h>
 #include <wx/panel.h>
+#include <wx/menu.h>
 #include <wx/frame.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -43,9 +44,20 @@ class MyFrame1 : public wxFrame
 		wxPanel* p_OriginalImage;
 		wxStaticLine* m_staticline2;
 		wxPanel* p_Stereogram;
+		wxMenuBar* m_menubar1;
+		wxMenu* m_Menu1;
+		wxMenu* m_Menu2;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void b_LoadFromFile_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void b_SaveToFile_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void b_Copy_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void b_Print_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_PageSettings_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_Preview_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_Print_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_Quit_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void m_About_Click( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
