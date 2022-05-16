@@ -24,7 +24,7 @@ class GUIMyFrame1 : public MyFrame1
 	//// end generated class members
 	private:
 		ImageHolder* _image;
-		Stereogram* _out;
+		Stereogram* _out=nullptr;
 
 };
 

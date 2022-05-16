@@ -58,3 +58,16 @@ void ImageHolder::SetPanelSize(wxSize size)
 {
 	_panelSize = size;
 }
+
+void ImageHolder::convertToImg() {
+	int imageHeight = _image.GetHeight();
+	int imageWidth = _image.GetWidth();
+	unsigned char* bmp = static_cast<unsigned char*>(malloc(imageHeight * imageWidth * 3));
+
+	for (int i = 0; i < imageHeight * imageWidth; ++i) {
+		bmp[3*i] = bmp[3*i + 1] = bmp[3*i + 2] = _imageData[i];
+	}
+
+	_image.SetData(bmp);
+	free(bmp);
+}
