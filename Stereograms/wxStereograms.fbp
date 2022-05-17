@@ -706,7 +706,7 @@
                 <property name="window_name"></property>
                 <property name="window_style"></property>
                 <object class="wxMenu" expanded="1">
-                    <property name="label">File</property>
+                    <property name="label">&amp;File</property>
                     <property name="name">m_Menu1</property>
                     <property name="permission">protected</property>
                     <object class="wxMenuItem" expanded="1">
@@ -716,7 +716,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Page settings</property>
+                        <property name="label">Page &amp;settings</property>
                         <property name="name">m_PageSettings</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
@@ -730,7 +730,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Print preview</property>
+                        <property name="label">Print pre&amp;view</property>
                         <property name="name">m_Preview</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
@@ -744,7 +744,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Print</property>
+                        <property name="label">&amp;Print</property>
                         <property name="name">m_Print</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
@@ -762,7 +762,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Quit</property>
+                        <property name="label">&amp;Quit</property>
                         <property name="name">m_Quit</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>
@@ -771,7 +771,7 @@
                     </object>
                 </object>
                 <object class="wxMenu" expanded="1">
-                    <property name="label">Help</property>
+                    <property name="label">&amp;Help</property>
                     <property name="name">m_Menu2</property>
                     <property name="permission">protected</property>
                     <object class="wxMenuItem" expanded="1">
@@ -781,7 +781,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">About</property>
+                        <property name="label">&amp;About</property>
                         <property name="name">m_About</property>
                         <property name="permission">none</property>
                         <property name="shortcut"></property>

@@ -65,31 +65,31 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_menubar1 = new wxMenuBar( 0 );
 	m_Menu1 = new wxMenu();
 	wxMenuItem* m_PageSettings;
-	m_PageSettings = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Page settings") ) , wxEmptyString, wxITEM_NORMAL );
+	m_PageSettings = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Page &settings") ) , wxEmptyString, wxITEM_NORMAL );
 	m_Menu1->Append( m_PageSettings );
 
 	wxMenuItem* m_Preview;
-	m_Preview = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Print preview") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Preview = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Print pre&view") ) , wxEmptyString, wxITEM_NORMAL );
 	m_Menu1->Append( m_Preview );
 
 	wxMenuItem* m_Print;
-	m_Print = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Print") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Print = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("&Print") ) , wxEmptyString, wxITEM_NORMAL );
 	m_Menu1->Append( m_Print );
 
 	m_Menu1->AppendSeparator();
 
 	wxMenuItem* m_Quit;
-	m_Quit = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Quit") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Quit = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("&Quit") ) , wxEmptyString, wxITEM_NORMAL );
 	m_Menu1->Append( m_Quit );
 
-	m_menubar1->Append( m_Menu1, wxT("File") );
+	m_menubar1->Append( m_Menu1, wxT("&File") );
 
 	m_Menu2 = new wxMenu();
 	wxMenuItem* m_About;
-	m_About = new wxMenuItem( m_Menu2, wxID_ANY, wxString( wxT("About") ) , wxEmptyString, wxITEM_NORMAL );
+	m_About = new wxMenuItem( m_Menu2, wxID_ANY, wxString( wxT("&About") ) , wxEmptyString, wxITEM_NORMAL );
 	m_Menu2->Append( m_About );
 
-	m_menubar1->Append( m_Menu2, wxT("Help") );
+	m_menubar1->Append( m_Menu2, wxT("&Help") );
 
 	this->SetMenuBar( m_menubar1 );
 

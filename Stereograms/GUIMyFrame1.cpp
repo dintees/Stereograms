@@ -73,7 +73,8 @@ void GUIMyFrame1::m_Preview_Click(wxCommandEvent& event)
 		frame->Centre(wxBOTH);
 		frame->Initialize();
 		frame->Show();
-	} else {
+	}
+	else {
 		wxMessageBox(_("No stereogram has been generated."));
 	}
 }
