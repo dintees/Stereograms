@@ -24,11 +24,12 @@ dc.DrawBitmap(bitmap, 0, 0, true);
 
 wxClientDC dc2(p_Stereogram);
 if (!_out) {
-	_out = new Stereogram(_image, dc2.GetSize(), _image->GetImage().GetSize(), 6);
+	_out = new Stereogram(_image, dc2.GetSize(), _image->GetImage().GetSize(), 10);
 }
+_out->_output.init();
 _out->generateStrips();
-//_out->_output.convertToImg();
-//dc2.DrawBitmap(wxBitmap(_out->_output.GetImage()),0,0,true);
+_out->_output.convertToImg();
+dc2.DrawBitmap(wxBitmap(_out->_output.GetImage()),0,0,true);
 }
 
 

@@ -13,9 +13,11 @@ public:
 	void convertToImg();
 	unsigned char& operator[](int x);
 	unsigned char& operator()(int x, int y);
+	void init();
 private:
 	wxImage _image;
 	wxSize _panelSize;
 	unsigned char* _imageData=nullptr;
+	int w, h;
 };
 
