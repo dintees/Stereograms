@@ -14,10 +14,13 @@ void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 	p_OriginalImage->ClearBackground(); // remove old photo from panel
 	wxClientDC dc(p_OriginalImage);
 	_image->SetPanelSize(dc.GetSize());
-	_image->LoadImg();
-	wxImage& image = _image->GetImage();
-	wxBitmap bitmap(image);
-	dc.DrawBitmap(bitmap, 0, 0, true);
+	bool isLoaded = _image->LoadImg();
+	if (isLoaded == true)
+	{
+		wxImage& image = _image->GetImage();
+		wxBitmap bitmap(image);
+		dc.DrawBitmap(bitmap, 0, 0, true);
+	}
 }
 
 void GUIMyFrame1::b_SaveToFile_Click(wxCommandEvent& event)
