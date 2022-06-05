@@ -1,5 +1,7 @@
 #include "GUIMyFrame1.h"
 #include "Printout.h"
+#include <wx/progdlg.h>
+
 
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	:
@@ -70,12 +72,27 @@ void GUIMyFrame1::m_Preview_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_Preview_Click
 	if (_image->GetImage().IsOk()) {
-		wxPrintPreview* preview = new wxPrintPreview(new Printout(_pageSetupData, _image->GetImage()));
-		wxPreviewFrame* frame = new wxPreviewFrame(preview, this, wxT("Print preview"), wxPoint(20, 20), wxSize(400, 600));
-		if (!preview->IsOk()) delete preview;
-		frame->Centre(wxBOTH);
-		frame->Initialize();
-		frame->Show();
+
+		wxPrintPreview* preview;
+
+		{
+			wxProgressDialog a(_("Printer check"), _("Looking for default printer. Please wait."));
+			a.Pulse();
+			preview = new wxPrintPreview(new Printout(_pageSetupData, _image->GetImage()));
+
+			a.Pulse();
+		}
+
+		if (CommDlgExtendedError() == PDERR_NODEFAULTPRN) {
+			wxMessageBox(_("No default printer found."));
+		}
+		else {
+			wxPreviewFrame* frame = new wxPreviewFrame(preview, this, wxT("Print preview"), wxPoint(20, 20), wxSize(400, 600));
+			if (!preview->IsOk()) delete preview;
+			frame->Centre(wxBOTH);
+			frame->Initialize();
+			frame->Show();
+		}
 	}
 	else {
 		wxMessageBox(_("No stereogram has been generated."));
