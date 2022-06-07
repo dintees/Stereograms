@@ -2,6 +2,47 @@
 #include "Printout.h"
 #include <wx/progdlg.h>
 
+bool DefaultPrinterAvailable() {
+	DWORD size = 0;
+	DWORD numprinters;
+	DWORD dwSizeNeeded = 0;
+
+	// Get the size of the default printer name.
+	GetDefaultPrinter(NULL, &size);
+	// Get the name of default printer
+	TCHAR* buffer = new TCHAR[size];
+	EnumPrinters(PRINTER_ENUM_LOCAL | PRINTER_ENUM_CONNECTIONS, NULL, 2, NULL, 0, &dwSizeNeeded, &numprinters);
+
+	// Get the printer name.
+	GetDefaultPrinter(buffer, &size);
+
+	HANDLE hPrinter = NULL;
+	// Get a pointer to the default printer
+	OpenPrinter(buffer, &hPrinter, NULL);
+	LPSTR pPrinterInfo = (LPSTR)malloc(dwSizeNeeded);
+	DWORD cByteUsed;
+
+	wxProgressDialog a(_("Printer check"), _("Looking for default printer. Please wait."));
+	a.Pulse();
+	if (!GetPrinter(hPrinter, 2, (LPBYTE)pPrinterInfo, dwSizeNeeded, &cByteUsed))
+	{
+		/* Failure to access the printer. */
+
+		free(pPrinterInfo);
+		pPrinterInfo = NULL;
+		// return FALSE;
+		//a.Pulse();
+		return false;
+	}
+	else {
+		free(pPrinterInfo);
+		pPrinterInfo = NULL;
+		//a.Pulse();
+		return true;
+	}
+}
+
+
 
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	:
@@ -63,35 +104,30 @@ void GUIMyFrame1::b_Print_Click(wxCommandEvent& event)
 void GUIMyFrame1::m_PageSettings_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_PageSettings_Click
-	wxPageSetupDialog PageSetupDlg(this, _pageSetupData.get());
-	PageSetupDlg.ShowModal();
-	*_pageSetupData = PageSetupDlg.GetPageSetupData();
+	if (DefaultPrinterAvailable()) {
+		wxPageSetupDialog PageSetupDlg(this, _pageSetupData.get());
+		PageSetupDlg.ShowModal();
+		*_pageSetupData = PageSetupDlg.GetPageSetupData();
+	}
+	else {
+		wxMessageBox(_("No default printer found."));
+	}
+		
 }
 
 void GUIMyFrame1::m_Preview_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_Preview_Click
 	if (_image->GetImage().IsOk()) {
-
-		wxPrintPreview* preview;
-
-		{
-			wxProgressDialog a(_("Printer check"), _("Looking for default printer. Please wait."));
-			a.Pulse();
-			preview = new wxPrintPreview(new Printout(_pageSetupData, _image->GetImage()));
-
-			a.Pulse();
-		}
-
-		if (CommDlgExtendedError() == PDERR_NODEFAULTPRN) {
-			wxMessageBox(_("No default printer found."));
-		}
-		else {
+		if (DefaultPrinterAvailable()){
+			wxPrintPreview* preview = new wxPrintPreview(new Printout(_pageSetupData, _image->GetImage()));
 			wxPreviewFrame* frame = new wxPreviewFrame(preview, this, wxT("Print preview"), wxPoint(20, 20), wxSize(400, 600));
 			if (!preview->IsOk()) delete preview;
 			frame->Centre(wxBOTH);
 			frame->Initialize();
 			frame->Show();
+		}else {
+			wxMessageBox(_("No default printer found."));
 		}
 	}
 	else {
