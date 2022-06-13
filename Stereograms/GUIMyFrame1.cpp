@@ -42,7 +42,6 @@ bool DefaultPrinterAvailable() {
 }
 
 
-
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	:
 	MyFrame1(parent)
@@ -53,12 +52,12 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 
 void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 {
-	p_OriginalImage->ClearBackground(); // remove old photo from panel
 	wxClientDC dc(p_OriginalImage);
 	_image->SetPanelSize(dc.GetSize());
 	bool isLoaded = _image->LoadImg();
 	if (isLoaded == true)
 	{
+		p_OriginalImage->ClearBackground(); // remove old photo from panel
 		wxImage& image = _image->GetImage();
 		wxBitmap bitmap(image);
 		dc.DrawBitmap(bitmap, 0, 0, true);
