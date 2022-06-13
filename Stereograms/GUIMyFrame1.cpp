@@ -1,5 +1,4 @@
 #include "GUIMyFrame1.h"
-#include "Printout.h"
 #include <wx/progdlg.h>
 
 bool DefaultPrinterAvailable() {

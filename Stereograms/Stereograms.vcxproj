@@ -150,6 +150,7 @@
     <ClCompile Include="GUIMyFrame1.cpp" />
     <ClCompile Include="ImageHolder.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Printout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h" />
