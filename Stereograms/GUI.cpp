@@ -62,16 +62,58 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	this->SetSizer( bSizer1 );
 	this->Layout();
+	m_menubar1 = new wxMenuBar( 0 );
+	m_Menu1 = new wxMenu();
+	wxMenuItem* m_PageSettings;
+	m_PageSettings = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Page &settings") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Menu1->Append( m_PageSettings );
+
+	wxMenuItem* m_Preview;
+	m_Preview = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("Print pre&view") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Menu1->Append( m_Preview );
+
+	wxMenuItem* m_Print;
+	m_Print = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("&Print") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Menu1->Append( m_Print );
+
+	m_Menu1->AppendSeparator();
+
+	wxMenuItem* m_Quit;
+	m_Quit = new wxMenuItem( m_Menu1, wxID_ANY, wxString( wxT("&Quit") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Menu1->Append( m_Quit );
+
+	m_menubar1->Append( m_Menu1, wxT("&File") );
+
+	m_Menu2 = new wxMenu();
+	wxMenuItem* m_About;
+	m_About = new wxMenuItem( m_Menu2, wxID_ANY, wxString( wxT("&About") ) , wxEmptyString, wxITEM_NORMAL );
+	m_Menu2->Append( m_About );
+
+	m_menubar1->Append( m_Menu2, wxT("&Help") );
+
+	this->SetMenuBar( m_menubar1 );
+
 
 	this->Centre( wxBOTH );
 
 	// Connect Events
 	b_LoadFromFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
+	b_SaveToFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
+	b_Copy->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );
+	b_Print->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Print_Click ), NULL, this );
+	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_PageSettings_Click ), this, m_PageSettings->GetId());
+	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_Preview_Click ), this, m_Preview->GetId());
+	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_Print_Click ), this, m_Print->GetId());
+	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_Quit_Click ), this, m_Quit->GetId());
+	m_Menu2->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_About_Click ), this, m_About->GetId());
 }
 
 MyFrame1::~MyFrame1()
 {
 	// Disconnect Events
 	b_LoadFromFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
+	b_SaveToFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
+	b_Copy->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );
+	b_Print->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Print_Click ), NULL, this );
 
 }

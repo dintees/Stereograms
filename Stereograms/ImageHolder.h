@@ -6,7 +6,7 @@ class ImageHolder
 public:
 	ImageHolder(wxSize panelSize) : _panelSize(panelSize) {}
 	ImageHolder() = default;
-	void LoadImg();
+	bool LoadImg();
 	unsigned char* GetImageData();
 	wxImage& GetImage();
 	void SetPanelSize(wxSize);

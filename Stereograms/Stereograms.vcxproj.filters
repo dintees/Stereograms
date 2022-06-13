@@ -27,7 +27,7 @@
     <ClCompile Include="ImageHolder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RDS.cpp">
+    <ClCompile Include="Printout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="ImageHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RDS.h">
+    <ClInclude Include="Printout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
