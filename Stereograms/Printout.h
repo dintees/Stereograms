@@ -3,6 +3,7 @@
 #include <wx/printdlg.h>
 #include <wx/print.h>
 #include <wx/printdlg.h>
+#include <wx/progdlg.h>
 
 /**
 * @brief a class for handling printing jobs which inherits from wxPrintout
@@ -23,3 +24,5 @@ public:
 	bool OnBeginDocument(int startPage, int endPage);
 	void GetPageInfo(int* minPage, int* maxPage, int* selPageFrom, int* selPageTo);
 };
+
+bool DefaultPrinterAvailable();

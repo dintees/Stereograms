@@ -37,7 +37,6 @@ class MyFrame1 : public wxFrame
 	protected:
 		wxButton* b_LoadFromFile;
 		wxStaticLine* m_staticline1;
-		wxButton* b_CreateStereogram;
 		wxButton* b_SaveToFile;
 		wxButton* b_Copy;
 		wxButton* b_Print;

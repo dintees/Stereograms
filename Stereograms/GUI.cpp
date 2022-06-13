@@ -25,9 +25,6 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticline1 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizer2->Add( m_staticline1, 0, wxEXPAND | wxALL, 5 );
 
-	b_CreateStereogram = new wxButton( this, wxID_ANY, wxT("Create stereogram"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer2->Add( b_CreateStereogram, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
-
 	b_SaveToFile = new wxButton( this, wxID_ANY, wxT("Save to File"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( b_SaveToFile, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
