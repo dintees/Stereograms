@@ -10,11 +10,14 @@ public:
 	unsigned char* GetImageData();
 	wxImage& GetImage();
 	void SetPanelSize(wxSize);
+	wxSize GetSize() const { return _image.GetSize(); }
 	unsigned char& operator[](int x);
 	unsigned char& operator()(int x, int y);
+
 private:
 	wxImage _image;
 	wxSize _panelSize;
-	unsigned char* _imageData;
+	unsigned char* _imageData=nullptr;
+	int w, h;
 };
 

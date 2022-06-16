@@ -151,12 +151,14 @@
     <ClCompile Include="ImageHolder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Printout.cpp" />
+    <ClCompile Include="RDS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h" />
     <ClInclude Include="GUIMyFrame1.h" />
     <ClInclude Include="ImageHolder.h" />
     <ClInclude Include="Printout.h" />
+    <ClInclude Include="RDS.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
