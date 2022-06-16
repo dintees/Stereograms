@@ -94,6 +94,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->Centre( wxBOTH );
 
 	// Connect Events
+	this->Connect( wxEVT_PAINT, wxPaintEventHandler( MyFrame1::MyFrame1OnPaint ) );
 	b_LoadFromFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
 	b_SaveToFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
 	b_Copy->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );
@@ -108,6 +109,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 MyFrame1::~MyFrame1()
 {
 	// Disconnect Events
+	this->Disconnect( wxEVT_PAINT, wxPaintEventHandler( MyFrame1::MyFrame1OnPaint ) );
 	b_LoadFromFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_LoadFromFile_Click ), NULL, this );
 	b_SaveToFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
 	b_Copy->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );

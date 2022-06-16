@@ -8,27 +8,29 @@ MyFrame1( parent )
 	_pageSetupData = std::shared_ptr<wxPageSetupDialogData>(new wxPageSetupDialogData);
 }
 
+void GUIMyFrame1::MyFrame1OnPaint( wxPaintEvent& event )
+{
+	show_img();
+}
+
 void GUIMyFrame1::b_LoadFromFile_Click( wxCommandEvent& event )
 {
 wxClientDC dc(p_OriginalImage);
 _image->SetPanelSize(dc.GetSize());
-bool isLoaded = _image->LoadImg();
-if (isLoaded == true)
+
+_isLoaded = _image->LoadImg();
+if (_isLoaded)
 {
-p_OriginalImage->ClearBackground(); // remove old photo from panel
-wxImage& image = _image->GetImage();
-wxBitmap bitmap(image);
-dc.DrawBitmap(bitmap, 0, 0, true);
-
-
-wxClientDC dc2(p_Stereogram);
-Stereogram o(_image, _image->GetSize(), 10);
-
-p_Stereogram->ClearBackground();
-
-o.generateStrips();
-dc2.DrawBitmap(wxBitmap(wxImage(o.GetSize(), o.getBitmap())), 0, 0, true);
+if (o_stereogram != nullptr) {
+delete o_stereogram;
+o_stereogram = nullptr;
 }
+
+o_stereogram = new Stereogram(_image, _image->GetSize(), 10);
+o_stereogram->generateStrips();
+}
+
+show_img();
 }
 
 void GUIMyFrame1::b_SaveToFile_Click( wxCommandEvent& event )
@@ -75,7 +77,8 @@ PageSetupDlg.ShowModal();
 *_pageSetupData = PageSetupDlg.GetPageSetupData();
 }
 else {
-wxMessageBox(_("No default printer found."));
+	show_img();
+	wxMessageBox(_("No default printer found."));
 }
 
 }
@@ -92,6 +95,7 @@ frame->Centre(wxBOTH);
 frame->Initialize();
 frame->Show();
 }else {
+show_img();
 wxMessageBox(_("No default printer found."));
 }
 }
@@ -123,4 +127,28 @@ void GUIMyFrame1::m_About_Click( wxCommandEvent& event )
 {
 // TODO: Implement m_About_Click
 wxMessageBox(_("Maybe some modal Window with the description of this program..."));
+}
+
+
+void GUIMyFrame1::show_img() 
+{
+	wxClientDC dc(p_OriginalImage);
+	if (_isLoaded)
+	{
+		p_OriginalImage->ClearBackground(); // remove old photo from panel
+		wxImage& image = _image->GetImage();
+		wxBitmap bitmap(image);
+		dc.DrawBitmap(bitmap, 0, 0, true);
+	}
+
+	wxClientDC dc2(p_Stereogram);
+
+	if (o_stereogram) {
+		p_Stereogram->ClearBackground();
+
+		/*wxImage im(o_stereogram->GetSize(), o_stereogram->getBitmap());
+		unsigned char* test = o_stereogram->getBitmap();*/
+		wxBitmap bmp(o_stereogram->GetImg());
+		dc2.DrawBitmap(bmp, 0, 0, true);
+	}
 }

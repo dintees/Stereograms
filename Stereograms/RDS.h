@@ -17,7 +17,7 @@ public:
     ~Stereogram(){delete[] _strip;}
 
     void generateStrips();
-    unsigned char* getBitmap() const;
+    wxImage GetImg() const;
 
     wxSize GetSize() const { return wxSize(_width, _height); }
 
@@ -30,6 +30,7 @@ private:
     } _output;
 
     ImageHolder& _image;
+    wxImage out_img;
 
     void generateRandomStrip();
     void fillChannelsGray();
@@ -42,6 +43,6 @@ private:
 };
 
 
-inline unsigned char* Stereogram::getBitmap() const {
-    return _output.img;
+inline wxImage Stereogram::GetImg() const {
+    return out_img;
 }

@@ -41,6 +41,8 @@ void Stereogram::generateStrips(){
  
   /* o.close();*/
        fillChannelsGray();
+
+       out_img = wxImage(_width, _height, _output.img);
 }
 
 void Stereogram::fillChannelsGray() {

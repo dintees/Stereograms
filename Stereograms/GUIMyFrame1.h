@@ -29,6 +29,7 @@ class GUIMyFrame1 : public MyFrame1
 {
 	protected:
 		// Handlers for MyFrame1 events.
+		void MyFrame1OnPaint( wxPaintEvent& event );
 		void b_LoadFromFile_Click( wxCommandEvent& event );
 		void b_SaveToFile_Click( wxCommandEvent& event );
 		void b_Copy_Click( wxCommandEvent& event );
@@ -43,10 +44,12 @@ class GUIMyFrame1 : public MyFrame1
 		GUIMyFrame1( wxWindow* parent );
 	//// end generated class members
 	private:
-		ImageHolder* _image;
+		ImageHolder* _image=nullptr;
 		std::shared_ptr<wxPageSetupDialogData> _pageSetupData;
+		bool _isLoaded = false;
 
-
+		Stereogram* o_stereogram = nullptr;
+		void show_img();
 
 };
 
