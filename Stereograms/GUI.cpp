@@ -41,7 +41,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 
 	p_OriginalImage = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	p_OriginalImage->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_ACTIVECAPTION ) );
+	p_OriginalImage->SetBackgroundColour( wxColour( 202, 202, 202 ) );
 
 	bSizer3->Add( p_OriginalImage, 1, wxEXPAND | wxALL, 5 );
 
@@ -49,7 +49,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer3->Add( m_staticline2, 0, wxEXPAND | wxALL, 5 );
 
 	p_Stereogram = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	p_Stereogram->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_HIGHLIGHT ) );
+	p_Stereogram->SetBackgroundColour( wxColour( 202, 202, 202 ) );
 
 	bSizer3->Add( p_Stereogram, 1, wxEXPAND | wxALL, 5 );
 

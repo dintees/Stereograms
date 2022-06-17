@@ -9,7 +9,7 @@ bool Printout::OnBeginDocument(int startPage, int endPage)
 bool Printout::OnPrintPage(int pageNum)
 {
 	wxDC* dc = GetDC();
-	FitThisSizeToPageMargins(wxSize(300, 600), *_pageSetupData);
+	FitThisSizeToPageMargins(wxSize(600, 300), *_pageSetupData);
 	dc->Clear();
 	dc->DrawBitmap(wxBitmap(_picture), 0, 0);
 	return true;

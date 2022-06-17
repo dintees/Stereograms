@@ -43,13 +43,14 @@ class GUIMyFrame1 : public MyFrame1
 		/** Constructor */
 		GUIMyFrame1( wxWindow* parent );
 	//// end generated class members
-	private:
-		ImageHolder* _image=nullptr;
-		std::shared_ptr<wxPageSetupDialogData> _pageSetupData;
-		bool _isLoaded = false;
+private:
+	ImageHolder* _image = nullptr;
+	std::shared_ptr<wxPageSetupDialogData> _pageSetupData;
+	bool _isLoaded = false;
 
-		Stereogram* o_stereogram = nullptr;
-		void show_img();
+	Stereogram* o_stereogram = nullptr;
+	void show_img();
+
 
 };
 
