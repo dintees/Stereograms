@@ -127,7 +127,7 @@ void GUIMyFrame1::m_Quit_Click(wxCommandEvent& event)
 void GUIMyFrame1::m_About_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_About_Click
-	wxMessageBox(_("Maybe some modal Window with the description of this program..."));
+	wxMessageBox(_("Program that creates a stereogram from a given image. The image should be 800x600 pixels in size.\n \nViewing the stereogram, the recommended distance from the monitor is 40-60 cm. Keep looking until you see the three squares at the top of the picture. \n \nAuthors: Damian £yszczarz, Bart³omiej Wypart, Piotr Gêbalski\nVersion 1.0"), _("About"), wxICON_INFORMATION);
 }
 
 
@@ -138,18 +138,48 @@ void GUIMyFrame1::show_img()
 	{
 		p_OriginalImage->ClearBackground(); // remove old photo from panel
 		wxImage& image = _image->GetImage();
-		wxBitmap bitmap(image);
-		dc.DrawBitmap(bitmap, 0, 0, true);
+		wxImage tmpImage = image;
+		
+		float marginLeft = p_OriginalImage->GetSize().x / 2 - image.GetSize().x / 2;
+		float marginTop = p_OriginalImage->GetSize().y / 2 - image.GetSize().y / 2;
+		if (marginLeft != 0 && marginTop != 0) {
+			if (marginLeft < marginTop) {
+				tmpImage.Rescale(p_OriginalImage->GetSize().x, p_OriginalImage->GetSize().x * 3./4);
+				marginTop -= marginLeft * 3/4.;
+				marginLeft = 0;
+			}
+			else {
+				tmpImage.Rescale(p_OriginalImage->GetSize().y * 4./3, p_OriginalImage->GetSize().y);
+				marginLeft -= marginTop * 4/3.;
+				marginTop = 0;
+			}
+		}
+		wxBitmap bitmap(tmpImage);
+		dc.DrawBitmap(bitmap, marginLeft, marginTop, true);
 	}
 
 	wxClientDC dc2(p_Stereogram);
 
 	if (o_stereogram) {
 		p_Stereogram->ClearBackground();
+		wxImage& image = o_stereogram->GetImg();
+		wxImage tmpImage = image;
 
-		/*wxImage im(o_stereogram->GetSize(), o_stereogram->getBitmap());
-		unsigned char* test = o_stereogram->getBitmap();*/
-		wxBitmap bmp(o_stereogram->GetImg());
-		dc2.DrawBitmap(bmp, 0, 0, true);
+		float marginLeft = p_Stereogram->GetSize().x / 2 - image.GetSize().x / 2;
+		float marginTop = p_Stereogram->GetSize().y / 2 - image.GetSize().y / 2;
+		if (marginLeft != 0 && marginTop != 0) {
+			if (marginLeft < marginTop) {
+				tmpImage.Rescale(p_Stereogram->GetSize().x, p_Stereogram->GetSize().x * 3. / 4);
+				marginTop -= marginLeft * 3 / 4.;
+				marginLeft = 0;
+			}
+			else {
+				tmpImage.Rescale(p_Stereogram->GetSize().y * 4. / 3, p_Stereogram->GetSize().y);
+				marginLeft -= marginTop * 4 / 3.;
+				marginTop = 0;
+			}
+		}
+		wxBitmap bitmap(tmpImage);
+		dc2.DrawBitmap(bitmap, marginLeft, marginTop, true);
 	}
 }

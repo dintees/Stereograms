@@ -7,7 +7,7 @@ bool ImageHolder::LoadImg()
 	wxImage::AddHandler(new wxPNGHandler);
 	wxImage::AddHandler(new wxJPEGHandler);
 	wxImage::AddHandler(new wxBMPHandler);
-	wxString filename = wxFileSelector(_T("Select file"), _T(""), _T(""), _T("*.bmp"), _T("All files (*.bmp)|*.bmp"));
+	wxString filename = wxFileSelector(_T("Select file"), _T(""), _T(""), _T("*"), _T("All files (*)|*|BMP files (*.bmp)|*.bmp|PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg"));
 	if (!filename.empty())
 	{
 		if (!_image.LoadFile(filename))
@@ -20,9 +20,10 @@ bool ImageHolder::LoadImg()
 		int panelWidth = _panelSize.GetWidth();
 
 		// modyfikacja rozmiaru zdjecia jesli jest wieksze niz dlugosc/szerokosc panelu
-		if (panelWidth <= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(panelWidth, panelHeight);
-		else if (panelWidth <= _image.GetWidth() && panelHeight >= _image.GetHeight()) _image = _image.Rescale(panelWidth, _image.GetHeight());
-		else if (panelWidth >= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(_image.GetWidth(), panelHeight);
+		// if (panelWidth <= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(panelWidth, panelHeight);
+		// if (panelWidth <= _image.GetWidth() && panelHeight >= _image.GetHeight()) _image = _image.Rescale(panelWidth, _image.GetHeight());
+		// else if (panelWidth >= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(_image.GetWidth(), panelHeight);
+
 
 		int imageHeight = _image.GetHeight();
 		int imageWidth = _image.GetWidth();
