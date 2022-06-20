@@ -43,8 +43,6 @@ class MyFrame1 : public wxFrame
 		wxButton* b_Print;
 		wxStaticLine* m_staticline11;
 		wxCheckBox* color_checkbox;
-		wxPanel* p_OriginalImage;
-		wxStaticLine* m_staticline2;
 		wxPanel* p_Stereogram;
 		wxMenuBar* m_menubar1;
 		wxMenu* m_Menu1;
@@ -66,7 +64,7 @@ class MyFrame1 : public wxFrame
 
 	public:
 
-		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Stereograms"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 740,690 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		MyFrame1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Stereograms"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 913,646 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~MyFrame1();
 

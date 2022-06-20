@@ -15,8 +15,8 @@ show_img();
 
 void GUIMyFrame1::b_LoadFromFile_Click( wxCommandEvent& event )
 {
-wxClientDC dc(p_OriginalImage);
-_image->SetPanelSize(dc.GetSize());
+//wxClientDC dc(p_OriginalImage);
+//_image->SetPanelSize(dc.GetSize());
 
 _isLoaded = _image->LoadImg();
 if (_isLoaded)
@@ -71,10 +71,10 @@ m_Print_Click(event);
 void GUIMyFrame1::color_checkboxOnCheckBox( wxCommandEvent& event )
 {
 // TODO: Implement color_checkboxOnCheckBox
-	if (o_stereogram) {
-		o_stereogram->generateStrips(color_checkbox->IsChecked());
-		show_img();
-	}
+if (o_stereogram) {
+o_stereogram->generateStrips(color_checkbox->IsChecked());
+show_img();
+}
 }
 
 void GUIMyFrame1::m_PageSettings_Click( wxCommandEvent& event )
@@ -142,30 +142,30 @@ wxMessageBox(_("Program that creates a stereogram from a given image. The image 
 
 void GUIMyFrame1::show_img()
 {
-	wxClientDC dc(p_OriginalImage);
-	if (_isLoaded)
-	{
-		p_OriginalImage->ClearBackground(); // remove old photo from panel
-		wxImage& image = _image->GetImage();
-		wxImage tmpImage = image;
-		
-		float marginLeft = p_OriginalImage->GetSize().x / 2 - image.GetSize().x / 2;
-		float marginTop = p_OriginalImage->GetSize().y / 2 - image.GetSize().y / 2;
-		if (marginLeft != 0 && marginTop != 0) {
-			if (marginLeft < marginTop) {
-				tmpImage.Rescale(p_OriginalImage->GetSize().x, p_OriginalImage->GetSize().x * 3./4);
-				marginTop -= marginLeft * 3/4.;
-				marginLeft = 0;
-			}
-			else {
-				tmpImage.Rescale(p_OriginalImage->GetSize().y * 4./3, p_OriginalImage->GetSize().y);
-				marginLeft -= marginTop * 4/3.;
-				marginTop = 0;
-			}
-		}
-		wxBitmap bitmap(tmpImage);
-		dc.DrawBitmap(bitmap, marginLeft, marginTop, true);
-	}
+	//wxClientDC dc(p_OriginalImage);
+	//if (_isLoaded)
+	//{
+	//	p_OriginalImage->ClearBackground(); // remove old photo from panel
+	//	wxImage& image = _image->GetImage();
+	//	wxImage tmpImage = image;
+	//	
+	//	float marginLeft = p_OriginalImage->GetSize().x / 2 - image.GetSize().x / 2;
+	//	float marginTop = p_OriginalImage->GetSize().y / 2 - image.GetSize().y / 2;
+	//	if (marginLeft != 0 && marginTop != 0) {
+	//		if (marginLeft < marginTop) {
+	//			tmpImage.Rescale(p_OriginalImage->GetSize().x, p_OriginalImage->GetSize().x * 3./4);
+	//			marginTop -= marginLeft * 3/4.;
+	//			marginLeft = 0;
+	//		}
+	//		else {
+	//			tmpImage.Rescale(p_OriginalImage->GetSize().y * 4./3, p_OriginalImage->GetSize().y);
+	//			marginLeft -= marginTop * 4/3.;
+	//			marginTop = 0;
+	//		}
+	//	}
+	//	wxBitmap bitmap(tmpImage);
+	//	dc.DrawBitmap(bitmap, marginLeft, marginTop, true);
+	//}
 
 	wxClientDC dc2(p_Stereogram);
 
@@ -176,18 +176,18 @@ void GUIMyFrame1::show_img()
 
 		float marginLeft = p_Stereogram->GetSize().x / 2 - image.GetSize().x / 2;
 		float marginTop = p_Stereogram->GetSize().y / 2 - image.GetSize().y / 2;
-		if (marginLeft != 0 && marginTop != 0) {
-			if (marginLeft < marginTop) {
-				tmpImage.Rescale(p_Stereogram->GetSize().x, p_Stereogram->GetSize().x * 3. / 4);
-				marginTop -= marginLeft * 3 / 4.;
-				marginLeft = 0;
-			}
-			else {
-				tmpImage.Rescale(p_Stereogram->GetSize().y * 4. / 3, p_Stereogram->GetSize().y);
-				marginLeft -= marginTop * 4 / 3.;
-				marginTop = 0;
-			}
-		}
+		//if (marginLeft != 0 && marginTop != 0) {
+		//	if (marginLeft < marginTop) {
+		//		//tmpImage.Rescale(p_Stereogram->GetSize().x, p_Stereogram->GetSize().x * 3. / 4);
+		//		marginTop -= marginLeft * 3 / 4.;
+		//		marginLeft = 0;
+		//	}
+		//	else {
+		//		//tmpImage.Rescale(p_Stereogram->GetSize().y * 4. / 3, p_Stereogram->GetSize().y);
+		//		marginLeft -= marginTop * 4 / 3.;
+		//		marginTop = 0;
+		//	}
+		//}
 		wxBitmap bitmap(tmpImage);
 		dc2.DrawBitmap(bitmap, marginLeft, marginTop, true);
 	}
