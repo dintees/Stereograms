@@ -76,14 +76,22 @@ void Stereogram::fillChannelsGray() {
 void Stereogram::fillChannelsColor() {
     for (int i = 0; i < _width; ++i) {
         for (int j = 0; j < _height; ++j) {
+
+            if (_output(i, j)[0] == 0) {
+                for (int k = 0; k < 3; ++k) {
+                    _output(i, j)[k] = 0;
+                }
+
+                continue;
+            }
             unsigned char col = _output(i, j)[0] % 3;
-            unsigned char def =  _output(i, j)[0] % 2;
+            unsigned char def = _output(i, j)[0] % 2;
 
             for (int k = 0; k < 3; ++k) {
                 _output(i, j)[k] = def * 255;
             }
 
-            _output(i,j)[col] = (1-def) * 255;
+            _output(i, j)[col] = (1 - def) * 255;
 
         }
     }
