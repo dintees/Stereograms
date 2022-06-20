@@ -9,14 +9,14 @@ public:
     Stereogram(ImageHolder* img, wxSize size, unsigned num_of_strips) 
      : strips_n{num_of_strips}, _width{size.x}, _height{size.y},
     _strip{new unsigned char[size.y*size.x/num_of_strips]}, _strip_w{size.x / static_cast<int>(num_of_strips)},
-        _output{ static_cast<unsigned char*>(malloc(size.x * size.y * 3)), size.x }, _image{ *img }
+        _output{nullptr, size.x }, _image{ *img }
     {
        srand(time(0));
     }
 
     ~Stereogram(){delete[] _strip;}
 
-    void generateStrips();
+    void generateStrips(bool color = false);
     wxImage GetImg() const;
 
     wxSize GetSize() const { return wxSize(_width, _height); }
@@ -32,8 +32,10 @@ private:
     ImageHolder& _image;
     wxImage out_img;
 
-    void generateRandomStrip();
+    void generateRandomStrip_G();
+    void generateRandomStrip_C();
     void fillChannelsGray();
+    void fillChannelsColor();
 
     unsigned strips_n;
     int _width;

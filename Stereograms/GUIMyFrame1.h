@@ -34,6 +34,7 @@ class GUIMyFrame1 : public MyFrame1
 		void b_SaveToFile_Click( wxCommandEvent& event );
 		void b_Copy_Click( wxCommandEvent& event );
 		void b_Print_Click( wxCommandEvent& event );
+		void color_checkboxOnCheckBox( wxCommandEvent& event );
 		void m_PageSettings_Click( wxCommandEvent& event );
 		void m_Preview_Click( wxCommandEvent& event );
 		void m_Print_Click( wxCommandEvent& event );
@@ -50,6 +51,7 @@ private:
 
 	Stereogram* o_stereogram = nullptr;
 	void show_img();
+
 
 
 };

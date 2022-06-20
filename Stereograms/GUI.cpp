@@ -34,6 +34,12 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	b_Print = new wxButton( this, wxID_ANY, wxT("Print"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer2->Add( b_Print, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
+	m_staticline11 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer2->Add( m_staticline11, 0, wxEXPAND | wxALL, 5 );
+
+	color_checkbox = new wxCheckBox( this, wxID_ANY, wxT("Colour"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer2->Add( color_checkbox, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
 
 	bSizer1->Add( bSizer2, 0, wxEXPAND, 5 );
 
@@ -99,6 +105,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	b_SaveToFile->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
 	b_Copy->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );
 	b_Print->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Print_Click ), NULL, this );
+	color_checkbox->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyFrame1::color_checkboxOnCheckBox ), NULL, this );
 	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_PageSettings_Click ), this, m_PageSettings->GetId());
 	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_Preview_Click ), this, m_Preview->GetId());
 	m_Menu1->Bind(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MyFrame1::m_Print_Click ), this, m_Print->GetId());
@@ -114,5 +121,6 @@ MyFrame1::~MyFrame1()
 	b_SaveToFile->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_SaveToFile_Click ), NULL, this );
 	b_Copy->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Copy_Click ), NULL, this );
 	b_Print->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::b_Print_Click ), NULL, this );
+	color_checkbox->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyFrame1::color_checkboxOnCheckBox ), NULL, this );
 
 }

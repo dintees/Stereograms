@@ -19,6 +19,7 @@
 #include <wx/colour.h>
 #include <wx/settings.h>
 #include <wx/statline.h>
+#include <wx/checkbox.h>
 #include <wx/sizer.h>
 #include <wx/panel.h>
 #include <wx/menu.h>
@@ -40,6 +41,8 @@ class MyFrame1 : public wxFrame
 		wxButton* b_SaveToFile;
 		wxButton* b_Copy;
 		wxButton* b_Print;
+		wxStaticLine* m_staticline11;
+		wxCheckBox* color_checkbox;
 		wxPanel* p_OriginalImage;
 		wxStaticLine* m_staticline2;
 		wxPanel* p_Stereogram;
@@ -53,6 +56,7 @@ class MyFrame1 : public wxFrame
 		virtual void b_SaveToFile_Click( wxCommandEvent& event ) { event.Skip(); }
 		virtual void b_Copy_Click( wxCommandEvent& event ) { event.Skip(); }
 		virtual void b_Print_Click( wxCommandEvent& event ) { event.Skip(); }
+		virtual void color_checkboxOnCheckBox( wxCommandEvent& event ) { event.Skip(); }
 		virtual void m_PageSettings_Click( wxCommandEvent& event ) { event.Skip(); }
 		virtual void m_Preview_Click( wxCommandEvent& event ) { event.Skip(); }
 		virtual void m_Print_Click( wxCommandEvent& event ) { event.Skip(); }
