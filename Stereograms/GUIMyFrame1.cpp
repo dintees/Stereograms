@@ -136,7 +136,7 @@ void GUIMyFrame1::m_Quit_Click(wxCommandEvent& event)
 void GUIMyFrame1::m_About_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_About_Click
-	wxMessageBox(_("Program that creates a stereogram from a given image. The image should be 800x600 pixels in size.\n \nViewing the stereogram, the recommended distance from the monitor is 40-60 cm. Keep looking until you see the three squares at the top of the picture. \n \nAuthors: Damian £yszczarz, Bart³omiej Wypart, Piotr Gêbalski\nVersion 1.0"), _("About"), wxICON_INFORMATION);
+	wxMessageBox(L"Program that creates a stereogram from a given image. The image should be 800x600 pixels in size.\n \nViewing the stereogram, the recommended distance from the monitor is 40-60 cm. Keep looking until you see the three squares at the top of the picture. \n \nAuthors: Damian \x141yszczarz, Bart\x142omiej Wypart, Piotr G\x119\x62\x61lski\nVersion 2.1", _("About"), wxICON_INFORMATION);
 }
 
 
