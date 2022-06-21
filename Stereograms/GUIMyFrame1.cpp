@@ -1,5 +1,5 @@
 #include "GUIMyFrame1.h"
-#include <cassert>
+//#include <cassert>
 
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	:
@@ -16,9 +16,6 @@ void GUIMyFrame1::MyFrame1OnPaint(wxPaintEvent& event)
 
 void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 {
-	//wxClientDC dc(p_OriginalImage);
-	//_image->SetPanelSize(wxSize(800,600));
-
 	_isLoaded = _image->LoadImg();
 	if (_isLoaded)
 	{
@@ -28,8 +25,8 @@ void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 		}
 
 		o_stereogram = new Stereogram(_image, wxSize(800,600), 8);
-		assert(("Wrong size", o_stereogram->GetSize().x == 800));
-		assert(("Wrong size", o_stereogram->GetSize().y == 600));
+		//assert(("Wrong size", o_stereogram->GetSize().x == 800));
+		//assert(("Wrong size", o_stereogram->GetSize().y == 600));
 		o_stereogram->generateStrips(color_checkbox->IsChecked());
 	}
 

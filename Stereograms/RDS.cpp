@@ -1,6 +1,6 @@
 #include "RDS.h"
 #include <fstream>
-#include <cassert>
+//#include <cassert>
 
 void Stereogram::generateRandomStrip_G() {
     for (int i = 0; i < _height * _strip_w; ++i) {
@@ -28,8 +28,7 @@ void Stereogram::generateStrips(bool color) {
     float c = _width / (strips_n + 1.0);
     float b = _width / strips_n;
 
-    /*std::ofstream o;
-    o.open("debug.txt");*/
+
     for (int i = 0; i< 3 || i < strips_n; ++i) {
         for (int y = 0; y < _height; ++y) {
             for (int x = 0; x < _strip_w; ++x) {
@@ -42,22 +41,21 @@ void Stereogram::generateStrips(bool color) {
         for (int y = 0; y < _height; ++y) {
             for (int x = 0; x < _strip_w; ++x) {
                 float a = c * static_cast<float>(_image(i * _strip_w + b * x / (c - 1), y)) / 255.0 * 0.1;
-                //o << a << "," << int(_image(i * _strip_w + b * x / (c - 1), y))<<std::endl;
 
 
                 if (i == 0) {
                     if (x + a < _strip_w) {
                         *_output(i * _strip_w + x, y) = _strip[y * _strip_w + (x + static_cast<int>(a)) % _strip_w];
-                        assert(("Going left from strip", (x + static_cast<int>(a)) % _strip_w >= 0));
+                        //assert(("Going left from strip", (x + static_cast<int>(a)) % _strip_w >= 0));
                     }
                     else {
                         *_output(x, y) = *_output(b + x + a, y);
-                        assert(("Impossible", a + x >= 0));
+                        //assert(("Impossible", a + x >= 0));
                     }
                 }
                 else {
                     *_output(i * b + x, y) = *_output((i - 1) * b + x + a, y);
-                    assert(("Again goint left", a + x >= 0));
+                    //assert(("Again goint left", a + x >= 0));
                 }
 
             }
@@ -71,7 +69,6 @@ void Stereogram::generateStrips(bool color) {
         }
     }
 
-    /* o.close();*/
     
     if(color)
         fillChannelsColor();

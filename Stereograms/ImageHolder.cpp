@@ -19,11 +19,7 @@ bool ImageHolder::LoadImg()
 		int panelHeight = _panelSize.GetHeight();
 		int panelWidth = _panelSize.GetWidth();
 
-		 ////modyfikacja rozmiaru zdjecia jesli jest wieksze niz dlugosc/szerokosc panelu
-		 //if (panelWidth <= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(panelWidth, panelHeight);
-		 //if (panelWidth <= _image.GetWidth() && panelHeight >= _image.GetHeight()) _image = _image.Rescale(panelWidth, _image.GetHeight());
-		 //else if (panelWidth >= _image.GetWidth() && panelHeight <= _image.GetHeight()) _image = _image.Rescale(_image.GetWidth(), panelHeight);
-
+		 //modyfikacja rozmiaru zdjecia jesli jest wieksze niz dlugosc/szerokosc panelu
 		 if (panelWidth != _image.GetWidth() || panelHeight != _image.GetHeight()) _image = _image.Rescale(panelWidth, panelHeight);
 
 
