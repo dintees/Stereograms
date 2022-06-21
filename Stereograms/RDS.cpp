@@ -1,5 +1,4 @@
 #include "RDS.h"
-#include <fstream>
 //#include <cassert>
 
 void Stereogram::generateRandomStrip_G() {
