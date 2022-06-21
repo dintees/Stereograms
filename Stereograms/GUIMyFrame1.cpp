@@ -142,31 +142,6 @@ void GUIMyFrame1::m_About_Click(wxCommandEvent& event)
 
 void GUIMyFrame1::show_img()
 {
-	//wxClientDC dc(p_OriginalImage);
-	//if (_isLoaded)
-	//{
-	//	p_OriginalImage->ClearBackground(); // remove old photo from panel
-	//	wxImage& image = _image->GetImage();
-	//	wxImage tmpImage = image;
-	//	
-	//	float marginLeft = p_OriginalImage->GetSize().x / 2 - image.GetSize().x / 2;
-	//	float marginTop = p_OriginalImage->GetSize().y / 2 - image.GetSize().y / 2;
-	//	if (marginLeft != 0 && marginTop != 0) {
-	//		if (marginLeft < marginTop) {
-	//			tmpImage.Rescale(p_OriginalImage->GetSize().x, p_OriginalImage->GetSize().x * 3./4);
-	//			marginTop -= marginLeft * 3/4.;
-	//			marginLeft = 0;
-	//		}
-	//		else {
-	//			tmpImage.Rescale(p_OriginalImage->GetSize().y * 4./3, p_OriginalImage->GetSize().y);
-	//			marginLeft -= marginTop * 4/3.;
-	//			marginTop = 0;
-	//		}
-	//	}
-	//	wxBitmap bitmap(tmpImage);
-	//	dc.DrawBitmap(bitmap, marginLeft, marginTop, true);
-	//}
-
 	wxClientDC dc2(p_Stereogram);
 
 	if (o_stereogram) {
@@ -176,18 +151,7 @@ void GUIMyFrame1::show_img()
 
 		float marginLeft = p_Stereogram->GetSize().x / 2 - image.GetSize().x / 2;
 		float marginTop = p_Stereogram->GetSize().y / 2 - image.GetSize().y / 2;
-		//if (marginLeft != 0 && marginTop != 0) {
-		//	if (marginLeft < marginTop) {
-		//		//tmpImage.Rescale(p_Stereogram->GetSize().x, p_Stereogram->GetSize().x * 3. / 4);
-		//		marginTop -= marginLeft * 3 / 4.;
-		//		marginLeft = 0;
-		//	}
-		//	else {
-		//		//tmpImage.Rescale(p_Stereogram->GetSize().y * 4. / 3, p_Stereogram->GetSize().y);
-		//		marginLeft -= marginTop * 4 / 3.;
-		//		marginTop = 0;
-		//	}
-		//}
+
 		wxBitmap bitmap(tmpImage);
 		dc2.DrawBitmap(bitmap, marginLeft, marginTop, true);
 	}

@@ -29,13 +29,6 @@ void Stereogram::generateStrips(bool color) {
     float b = _width / strips_n;
 
 
-    for (int i = 0; i< 3 || i < strips_n; ++i) {
-        for (int y = 0; y < _height; ++y) {
-            for (int x = 0; x < _strip_w; ++x) {
-                *_output(i * _strip_w + x, y) = _strip[y * _strip_w + x];
-            }
-        }
-    }
 
     for (int i = 0; i < strips_n; ++i) {
         for (int y = 0; y < _height; ++y) {
@@ -44,14 +37,8 @@ void Stereogram::generateStrips(bool color) {
 
 
                 if (i == 0) {
-                    if (x + a < _strip_w) {
-                        *_output(i * _strip_w + x, y) = _strip[y * _strip_w + (x + static_cast<int>(a)) % _strip_w];
-                        //assert(("Going left from strip", (x + static_cast<int>(a)) % _strip_w >= 0));
-                    }
-                    else {
-                        *_output(x, y) = *_output(b + x + a, y);
-                        //assert(("Impossible", a + x >= 0));
-                    }
+                    *_output(i * _strip_w + x, y) = _strip[y * _strip_w + (x + static_cast<int>(a)) % _strip_w];
+                    //assert(("Going left from strip", (x + static_cast<int>(a)) % _strip_w >= 0));
                 }
                 else {
                     *_output(i * b + x, y) = *_output((i - 1) * b + x + a, y);
