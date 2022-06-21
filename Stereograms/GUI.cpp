@@ -11,7 +11,7 @@
 
 MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxSize( 600,550 ), wxDefaultSize );
+	this->SetSizeHints( wxSize( 1000,700 ), wxDefaultSize );
 
 	wxBoxSizer* bSizer1;
 	bSizer1 = new wxBoxSizer( wxHORIZONTAL );
@@ -46,16 +46,10 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 
-	p_OriginalImage = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	p_OriginalImage->SetBackgroundColour( wxColour( 202, 202, 202 ) );
-
-	bSizer3->Add( p_OriginalImage, 1, wxEXPAND | wxALL, 5 );
-
-	m_staticline2 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer3->Add( m_staticline2, 0, wxEXPAND | wxALL, 5 );
-
+	bSizer3->SetMinSize( wxSize( 800,600 ) );
 	p_Stereogram = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	p_Stereogram->SetBackgroundColour( wxColour( 202, 202, 202 ) );
+	p_Stereogram->SetMinSize( wxSize( 800,600 ) );
 
 	bSizer3->Add( p_Stereogram, 1, wxEXPAND | wxALL, 5 );
 

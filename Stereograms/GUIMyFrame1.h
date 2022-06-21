@@ -54,6 +54,13 @@ private:
 
 
 
+
+
+
+
+
+
+
 };
 
 #endif // __GUIMyFrame1__

@@ -9,7 +9,7 @@ void Stereogram::generateRandomStrip_G() {
 
 void Stereogram::generateRandomStrip_C() {
     for (int i = 0; i < _height * _strip_w; ++i) {
-        _strip[i] = rand() % 6;
+        _strip[i] = rand() % 7;
     }
 }
 
