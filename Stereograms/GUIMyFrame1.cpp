@@ -1,4 +1,5 @@
 #include "GUIMyFrame1.h"
+//#include <cassert>
 
 GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	:
@@ -15,9 +16,6 @@ void GUIMyFrame1::MyFrame1OnPaint(wxPaintEvent& event)
 
 void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 {
-	//wxClientDC dc(p_OriginalImage);
-	//_image->SetPanelSize(dc.GetSize());
-
 	_isLoaded = _image->LoadImg();
 	if (_isLoaded)
 	{
@@ -26,7 +24,9 @@ void GUIMyFrame1::b_LoadFromFile_Click(wxCommandEvent& event)
 			o_stereogram = nullptr;
 		}
 
-		o_stereogram = new Stereogram(_image, _image->GetSize(), 10);
+		o_stereogram = new Stereogram(_image, wxSize(800,600), 8);
+		//assert(("Wrong size", o_stereogram->GetSize().x == 800));
+		//assert(("Wrong size", o_stereogram->GetSize().y == 600));
 		o_stereogram->generateStrips(color_checkbox->IsChecked());
 	}
 
@@ -136,37 +136,12 @@ void GUIMyFrame1::m_Quit_Click(wxCommandEvent& event)
 void GUIMyFrame1::m_About_Click(wxCommandEvent& event)
 {
 	// TODO: Implement m_About_Click
-	wxMessageBox(_("Program that creates a stereogram from a given image. The image should be 800x600 pixels in size.\n \nViewing the stereogram, the recommended distance from the monitor is 40-60 cm. Keep looking until you see the three squares at the top of the picture. \n \nAuthors: Damian £yszczarz, Bart³omiej Wypart, Piotr Gêbalski\nVersion 1.0"), _("About"), wxICON_INFORMATION);
+	wxMessageBox(L"Program that creates a stereogram from a given image. The image should be 800x600 pixels in size.\n \nViewing the stereogram, the recommended distance from the monitor is 40-60 cm. Keep looking until you see the three squares at the top of the picture. \n \nAuthors: Damian \x141yszczarz, Bart\x142omiej Wypart, Piotr G\x119\x62\x61lski\nVersion 2.1", _("About"), wxICON_INFORMATION);
 }
 
 
 void GUIMyFrame1::show_img()
 {
-	//wxClientDC dc(p_OriginalImage);
-	//if (_isLoaded)
-	//{
-	//	p_OriginalImage->ClearBackground(); // remove old photo from panel
-	//	wxImage& image = _image->GetImage();
-	//	wxImage tmpImage = image;
-	//	
-	//	float marginLeft = p_OriginalImage->GetSize().x / 2 - image.GetSize().x / 2;
-	//	float marginTop = p_OriginalImage->GetSize().y / 2 - image.GetSize().y / 2;
-	//	if (marginLeft != 0 && marginTop != 0) {
-	//		if (marginLeft < marginTop) {
-	//			tmpImage.Rescale(p_OriginalImage->GetSize().x, p_OriginalImage->GetSize().x * 3./4);
-	//			marginTop -= marginLeft * 3/4.;
-	//			marginLeft = 0;
-	//		}
-	//		else {
-	//			tmpImage.Rescale(p_OriginalImage->GetSize().y * 4./3, p_OriginalImage->GetSize().y);
-	//			marginLeft -= marginTop * 4/3.;
-	//			marginTop = 0;
-	//		}
-	//	}
-	//	wxBitmap bitmap(tmpImage);
-	//	dc.DrawBitmap(bitmap, marginLeft, marginTop, true);
-	//}
-
 	wxClientDC dc2(p_Stereogram);
 
 	if (o_stereogram) {
@@ -176,18 +151,7 @@ void GUIMyFrame1::show_img()
 
 		float marginLeft = p_Stereogram->GetSize().x / 2 - image.GetSize().x / 2;
 		float marginTop = p_Stereogram->GetSize().y / 2 - image.GetSize().y / 2;
-		//if (marginLeft != 0 && marginTop != 0) {
-		//	if (marginLeft < marginTop) {
-		//		//tmpImage.Rescale(p_Stereogram->GetSize().x, p_Stereogram->GetSize().x * 3. / 4);
-		//		marginTop -= marginLeft * 3 / 4.;
-		//		marginLeft = 0;
-		//	}
-		//	else {
-		//		//tmpImage.Rescale(p_Stereogram->GetSize().y * 4. / 3, p_Stereogram->GetSize().y);
-		//		marginLeft -= marginTop * 4 / 3.;
-		//		marginTop = 0;
-		//	}
-		//}
+
 		wxBitmap bitmap(tmpImage);
 		dc2.DrawBitmap(bitmap, marginLeft, marginTop, true);
 	}
