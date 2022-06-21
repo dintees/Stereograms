@@ -7,7 +7,7 @@ bool ImageHolder::LoadImg()
 	wxImage::AddHandler(new wxPNGHandler);
 	wxImage::AddHandler(new wxJPEGHandler);
 	wxImage::AddHandler(new wxBMPHandler);
-	wxString filename = wxFileSelector(_T("Select file"), _T(""), _T(""), _T("*"), _T("All files (*)|*|BMP files (*.bmp)|*.bmp|PNG files (*.png)|*.png|JPG files (*.jpg)|*.jpg"));
+	wxString filename = wxFileSelector(_T("Select file"), _T(""), _T(""), _T("*"), _T("BMP files (*.bmp)|*.bmp"));
 	if (!filename.empty())
 	{
 		if (!_image.LoadFile(filename))
