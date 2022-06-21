@@ -4,7 +4,7 @@
 class ImageHolder
 {
 public:
-	ImageHolder(wxSize panelSize) : _panelSize(panelSize) {}
+	//ImageHolder(wxSize panelSize) : _panelSize(panelSize) {}
 	ImageHolder() = default;
 	bool LoadImg();
 	unsigned char* GetImageData();
@@ -16,7 +16,7 @@ public:
 
 private:
 	wxImage _image;
-	wxSize _panelSize;
+	wxSize _panelSize{ 800,600 };
 	unsigned char* _imageData=nullptr;
 	int w, h;
 };
